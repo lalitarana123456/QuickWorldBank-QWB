@@ -42,7 +42,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.role = role;
-		
+		 
 	}
 	
 	//we will provide getter and setter as per the requirement
@@ -56,5 +56,5 @@ public class User {
 	
 	public String getRole(){
 		return role;
-	}
+	} 
 }

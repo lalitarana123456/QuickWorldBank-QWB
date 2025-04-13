@@ -27,16 +27,20 @@ public class SecurityConfig {
 		http
 		.csrf(csrf -> csrf.disable())//disable CSRF protection for postman testing
 		.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/api/auth/**", "/login", "/css/**", "/js/**").permitAll()
+				.requestMatchers("/signin", "/doLogin", "/api/auth/**", "/css/**", "/js/**").permitAll()
 				.anyRequest().authenticated()
 				)
 		.formLogin(form -> form
-				.loginPage("/login")
+				.loginPage("/signin")
+				.loginProcessingUrl("/doLogin")
+				.defaultSuccessUrl("/home", true)
 				.permitAll()
-				)
-		.sessionManagement(session -> session
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				);
+		//.logout(logout -> logout.permitAll()
+	//			);
+//		.sessionManagement(session -> session
+//				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//				);
 		
 		
 		return http.build();

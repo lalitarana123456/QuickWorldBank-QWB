@@ -42,7 +42,7 @@ public class JWTUtil {
 	}
 	
 	
-	//validating JWT TOEKN
+	//validating JWT TOEKN 
 	public boolean isTokenValid(String token){
 		
 		try {
