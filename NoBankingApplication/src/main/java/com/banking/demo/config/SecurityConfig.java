@@ -43,7 +43,7 @@ public class SecurityConfig {
 		.formLogin(form -> form
 				.loginPage("/signin")
 				.loginProcessingUrl("/doLogin")
-				.defaultSuccessUrl("/home", true)
+				.defaultSuccessUrl("/create_account", true)
 				.permitAll()
 				);
 		//.logout(logout -> logout.permitAll()

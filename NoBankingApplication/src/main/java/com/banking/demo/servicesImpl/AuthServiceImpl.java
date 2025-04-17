@@ -1,6 +1,8 @@
 package com.banking.demo.servicesImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,10 +46,12 @@ public class AuthServiceImpl implements AuthService{
 		User existingUser = userRepository.findByUsername(username);
 		
 		
-		if(existingUser == null || !passwordEncoder.matches(password, existingUser.getPassword())){
-			throw new RuntimeException("Invalid username or password");
+		if(existingUser == null){
+			throw new UsernameNotFoundException("User not found with the username: " + username);
 		}
-		
+		if(!passwordEncoder.matches(password, existingUser.getPassword())){
+			throw new BadCredentialsException("Invaid password");
+		}
 		return jwtUtil.generateToken(username);//returning JWT token if authentication is successfull
 		
 		 

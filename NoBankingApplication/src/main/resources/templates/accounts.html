@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Accounts - MyBank</title>
+    <link rel="stylesheet" th:href="@{/css/accounts.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Bank Account Dashboard</h1>
+
+        <div th:if="${#lists.isEmpty(accounts)}">
+            <p>No accounts found.</p>
+        </div>
+
+        <div th:if="${!#lists.isEmpty(accounts)}" class="account-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account Number</th>
+                        <th>Account Type</th>
+                        <th>Balance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="acc : ${accounts}">
+                        <td th:text="${acc.accountNumber}">ACC123</td>
+                        <td th:text="${acc.accountType}">Saving</td>
+                        <td th:text="${acc.balance}">5000</td>
+                        <td th:text="${acc.status}">Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-links">
+            <a href="/deposit">Deposit</a> |
+            <a href="/withdraw">Withdraw</a>
+        </div>
+    </div>
+</body>
+</html>

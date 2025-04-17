@@ -1,6 +1,7 @@
-package com.banking.demo.controllers;
+package com.banking.demo.controllersMVC;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -11,5 +12,6 @@ public class HomeUIController {
 	public String home(){
 		return "/home";
 	}
+
 
 }

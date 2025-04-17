@@ -1,4 +1,4 @@
-package com.banking.demo.controllers;
+package com.banking.demo.controllersAPI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
