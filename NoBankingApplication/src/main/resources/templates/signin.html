@@ -1,111 +1,84 @@
-
-<!-- templates/login.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Register</title>
     <style>
-    body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            background: #f2f2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-/* Centered container */
-.container {
-    max-width: 400px;
-    margin: 80px auto;
-    background: #fff;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
+        .form-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
 
-/* Headings */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #4a90e2;
-}
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
 
-/* Labels and inputs */
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
-}
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
 
-input {
-    width: 100%;
-    padding: 8px 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
+        button {
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-/* Buttons */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
+        button:hover {
+            background: #45a049;
+        }
 
-button:hover {
-    background-color: #357ABD;
-}
+        .switch-link {
+            text-align: center;
+            margin-top: 15px;
+        }
 
-/* Links */
-a {
-    color: #4a90e2;
-    text-decoration: none;
-    font-weight: 500;
-}
+        .switch-link a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
 
-a:hover {
-    text-decoration: underline;
-}
-
-/* Table styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #f0f0f0;
-}
-    
+        .switch-link a:hover {
+            text-decoration: underline;
+        }
     </style>
-    
 </head>
 <body>
-    <h2>Login</h2>
-    <!-- Form submits to /login handled by Spring Security -->
+<div class="form-container">
+    <h2>SignIn/Login</h2>
     <form th:action="@{/doLogin}" method="post">
-        <label>Email:</label>
-        <input type="text" name="username"/><br/>
-
-        <label>Password:</label>
-        <input type="password" name="password"/><br/>
-
+        <input type="text" name="username" placeholder="Username" required/>
+        <input type="password" name="password" placeholder="Password" required/>
         <button type="submit">Login</button>
     </form>
-
-    <!-- Link to registration page -->
-    <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+    <div class="switch-link">
+        Already have an account? <a th:href="@{/signup}">SignUp here</a>
+    </div>
+</div>
 </body>
 </html>
