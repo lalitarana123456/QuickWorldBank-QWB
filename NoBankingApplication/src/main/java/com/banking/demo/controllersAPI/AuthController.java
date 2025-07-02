@@ -32,5 +32,7 @@ public class AuthController {
 		return new ResponseEntity<String>(authService.authenticateUser(username, password), HttpStatus.OK);
 		
 	}
+	
+	
 
 }

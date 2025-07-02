@@ -32,6 +32,9 @@ public class AccountController {
 		return new ResponseEntity<List<Account>>(accountService.getAllAccounts(), HttpStatus.OK);
 	}
 	
+	
+	/*-----------------------------bellow all are common features for all users---------------------------*/
+	
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/{id}")
 	public ResponseEntity<Account> getAccountByIdHandler(@PathVariable Long Id){
@@ -39,9 +42,11 @@ public class AccountController {
 		return new ResponseEntity<Account>(accountService.getAccountById(Id), HttpStatus.OK);
 		
 	}
-	@PreAuthorize("hasRole('ADMIN', 'USER')")
-	@PostMapping
+//	@PreAuthorize("hasRole('ADMIN', 'USER')")
+	@PostMapping("/create")
 	public ResponseEntity<Account> createAccountHandler(@RequestBody Account account){
+		
+		System.out.println("Account holder name" + account.getAccountHolderName());
 		
 		return new ResponseEntity<Account>(accountService.createAccount(account), HttpStatus.OK);
 	    	

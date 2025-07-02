@@ -41,7 +41,7 @@ public class AcountServiceImpl implements AccountService{
 
 	@Override
 	public Account createAccount(Account account) {
-		
+		System.out.println("Account holder name" + account.getAccountHolderName());
 		//getting currently logged in user
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		User user =  userRepository.findByUsername(username);
